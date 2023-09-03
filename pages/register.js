@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import Loader from "@/components/Loader";
 import Link from "next/link";
 
-const provider = new GoogleAuthProvider();
+const Provider = new GoogleAuthProvider();
 
 const RegisterForm = () => {
   const [username, setUsername] = useState(null);
@@ -51,7 +51,7 @@ const RegisterForm = () => {
 
   const signInWithGoogle = async () => {
     try {
-      const user = await signInWithPopup(auth, provider);
+      const user = await signInWithPopup(auth, Provider);
       // console.log(user);
     } catch (error) {
       console.log(error);

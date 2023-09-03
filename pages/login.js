@@ -7,7 +7,7 @@ import {useRouter} from "next/router";
 import Loader from "@/components/Loader";
 import Link from "next/link";
 
-const provider = new GoogleAuthProvider()
+const Provider = new GoogleAuthProvider()
 const LoginForm = () => {
     const router = useRouter()
     const {authUser, isLoading} = useAuth()
@@ -31,12 +31,11 @@ const LoginForm = () => {
     }
     const signInWithGoogle = async () => {
         try {
-            const user = await signInWithPopup(auth, provider)
-            console.log(user)     
+            await signInWithPopup(auth, Provider);
         } catch (error) {
-            console.log(error)
+            console.error("An error occured", error);
         }
-    }
+    };
 
     return (
         isLoading || (!isLoading && authUser) ? <Loader /> : (
